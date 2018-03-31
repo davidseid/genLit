@@ -14,11 +14,16 @@ class App extends React.Component {
     }
   }
 
+  setSourceText(text) {
+    console.log(text);
+  }
+
+
   render() {
     return (
       <div>
         <h2>{title}</h2>
-        <Source />
+        <Source setSourceText={this.setSourceText.bind(this)}/>
         <Write />
         <Suggestions />
       </div>

@@ -3,7 +3,10 @@ const morgan = require('morgan');
 
 const app = express();
 
-morgan('tiny');
+app.use((req, res, next) => {
+  console.log(`${req.method} received from ${req.url}`);
+  next();
+})
 
 app.use(express.static('dist'));
 
