@@ -19,7 +19,6 @@ Once the project moves into development, the press release can be used as a touc
  -->
   > A software to help you write more creatively.
 
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
   > This software uses predictive text emulation to assist writers of all levels with the creative writing process. As you write,
   > Creator's Block suggests new words and phrases for you to choose from based on a predictive-text engine and user-selected source material. 
 
