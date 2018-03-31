@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Suggestions = (props) => {
+const Suggestions = ({suggestedWords}) => {
   return (
     <div>
       <h3>Suggestions</h3>
-      <p>Next word</p>
+      <div>
+      {suggestedWords.map(word => <p>{word}</p>)}
+      </div>
     </div>
   )
 }

@@ -10,19 +10,16 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      source: {}
+      source: {},
+      currentWord: '',
+      suggestedWords: []
     }
   }
 
   setSourceText(text) {
-    // output: object with 
-      //each word as a prop
-      //and an array of next words
-      //and a count
-      //and a prop of the most common word
-
     const source = {};
     const words = text.split(' ');
+    let mostFrequentWordCount = 0;
     
     words.forEach((word, index) => {
       word = word.toLowerCase();
@@ -33,8 +30,12 @@ class App extends React.Component {
           }
       if (!source[word]) {
         source[word] = {count: 1, next: [words[index + 1]]};
+        mostFrequentWordCount = 1;
       } else {
         source[word].count += 1;
+        if (source[word].count > mostFrequentWordCount) {
+          source['mostFrequentWord'] = word;
+        }
         source[word].next.push(words[index + 1]);
       }
     });
@@ -44,14 +45,41 @@ class App extends React.Component {
     });
   }
 
+  getCurrentWord(text) {
+    const words = text.split(' ');
+
+    let currentWord = words[words.length - 1].toLowerCase() || ' ';
+    if (currentWord === '') {
+      currentWord = words[words.length - 2].toLowerCase() || ' ';
+    }
+
+    this.suggestWords(currentWord);
+    
+    this.setState({
+      currentWord: currentWord
+    });
+  }
+
+  suggestWords(currentWord) {
+    let words = [];
+    if (this.state.source[currentWord]) {
+      words = this.state.source[currentWord].next;
+    } else {
+      words.push(this.state.source.mostFrequentWord);
+    }
+
+    this.setState({
+      suggestedWords: words
+    })
+  }
 
   render() {
     return (
       <div>
         <h2>{title}</h2>
-        <Source setSourceText={this.setSourceText.bind(this)}/>
-        <Write />
-        <Suggestions />
+        <Source setSourceText={this.setSourceText.bind(this)} />
+        <Write getCurrentWord={this.getCurrentWord.bind(this)} />
+        <Suggestions suggestedWords={this.state.suggestedWords} />
       </div>
     )
   }
