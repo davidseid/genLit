@@ -3,13 +3,13 @@ import Source from './Source';
 import Write from './Write';
 import Suggestions from './Suggestions';
 
-const title = 'Creator\'s Block App';
+const title = 'Creator\'s Block';
 
 
 const App = (props) => {
   return (
     <div>
-      <div>{title}</div>
+      <h2>{title}</h2>
       <Source />
       <Write />
       <Suggestions />
