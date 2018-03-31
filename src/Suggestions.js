@@ -4,7 +4,7 @@ import SuggestedWord from './SuggestedWord';
 const Suggestions = ({suggestedWords}) => {
   return (
     <div>
-      <h3>Suggestions</h3>
+      <h3>Word Suggestions</h3>
       <div className="suggested-words">
       {suggestedWords.map((word) => {
         return <SuggestedWord word={word} />
