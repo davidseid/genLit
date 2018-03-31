@@ -6,16 +6,25 @@ import Suggestions from './Suggestions';
 const title = 'Creator\'s Block';
 
 
-const App = (props) => {
-  return (
-    <div>
-      <h2>{title}</h2>
-      <Source />
-      <Write />
-      <Suggestions />
-    </div>
-  )
-}
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      source: {example: 'ex'}
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>{title}</h2>
+        <Source />
+        <Write />
+        <Suggestions />
+      </div>
+    )
+  }
+} 
 
 export default App;
 
