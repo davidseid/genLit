@@ -23,20 +23,41 @@ class App extends React.Component {
     
     words.forEach((word, index) => {
       word = word.toLowerCase();
-      if (word[word.length -1 ] === '.' || 
-          word[word.length -1 ] === ';' ||
-          word[word.length -1 ] === ',') {
-            word = word.slice(0, word.length - 1);
-          }
-      if (!source[word]) {
-        source[word] = {count: 1, next: [words[index + 1]]};
-        mostFrequentWordCount = 1;
-      } else {
-        source[word].count += 1;
-        if (source[word].count > mostFrequentWordCount) {
-          source['mostFrequentWord'] = word;
+
+      if (index < words.length - 1) {
+        let nextWord = words[index + 1];
+        if (nextWord) {
+          nextWord = nextWord.toLowerCase();
         }
-        source[word].next.push(words[index + 1]);
+        if (word[word.length - 1] === '.' || 
+            word[word.length - 1] === ';' ||
+            word[word.length - 1] === ',') {
+              word = word.slice(0, word.length - 1);
+            }
+        if (nextWord[word.length - 1] === '.' || 
+            nextWord[word.length - 1] === ';' ||
+            nextWord[word.length - 1] === ',') {
+              nextWord = nextWord.slice(0, word.length - 1);
+            }
+        if (!source[word]) {
+          // source[word] = {count: 1, next: [words[index + 1]]};
+          let nextWords = {};
+          nextWords[nextWord] = 1;
+          source[word] = {count: 1, nextWords: nextWords};
+          mostFrequentWordCount = 1;
+        } else {
+          source[word].count += 1;
+          if (source[word].count > mostFrequentWordCount) {
+            mostFrequentWordCount = source[word].count;
+            source['mostFrequentWord'] = word;
+          }
+          // source[word].nextWords.push(words[index + 1]);
+          if (source[word].nextWords[nextWord]) {
+            source[word].nextWords[nextWord] += 1;
+          } else {
+            source[word].nextWords[nextWord] = 1;
+          }
+        }
       }
     });
 
@@ -48,9 +69,9 @@ class App extends React.Component {
   getCurrentWord(text) {
     const words = text.split(' ');
 
-    let currentWord = words[words.length - 1].toLowerCase() || ' ';
+    let currentWord = words[words.length - 1].toLowerCase() || '';
     if (currentWord === '') {
-      currentWord = words[words.length - 2].toLowerCase() || ' ';
+      currentWord = words[words.length - 2].toLowerCase() || '';
     }
 
     this.suggestWords(currentWord);
@@ -62,10 +83,24 @@ class App extends React.Component {
 
   suggestWords(currentWord) {
     let words = [];
+
     if (this.state.source[currentWord]) {
-      words = this.state.source[currentWord].next;
-    } else {
+      console.log('word in my source')
+      for (var key in this.state.source[currentWord].nextWords) {
+        words.push(key);
+      }
+    }
+
+    if (words.length === 0) {
       words.push(this.state.source.mostFrequentWord);
+    }
+
+    if (words.length > 10) {
+      let randomizedWords = [];
+      for (let i = 0; i < 5; i++) {
+        randomizedWords.push(words[Math.floor(Math.random() * words.length - 1)]);
+      }
+      words = randomizedWords;
     }
 
     this.setState({

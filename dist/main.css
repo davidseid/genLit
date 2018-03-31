@@ -1,0 +1,8 @@
+.suggested-words {
+  display: flex;
+  flex-direction: row;
+}
+
+.word {
+  margin: 1em;
+}
