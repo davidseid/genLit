@@ -1,6 +1,10 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const morgan = require('morgan');
 
-app.get('/', (req, res) => res.send('Hello World!'))
+const app = express();
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+morgan('tiny');
+
+app.use(express.static('dist'));
+
+app.listen(3000, () => console.log('Listening on port 3000!'))
