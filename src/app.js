@@ -18,8 +18,9 @@ class App extends React.Component {
 
   setSourceText(text) {
     const source = {};
-    const words = text.split(' ');
+    const words = text.replace( /\n/g, " " ).split(' ');
     let mostFrequentWordCount = 0;
+
     
     words.forEach((word, index) => {
       word = word.toLowerCase();
@@ -40,7 +41,6 @@ class App extends React.Component {
               nextWord = nextWord.slice(0, word.length - 1);
             }
         if (!source[word]) {
-          // source[word] = {count: 1, next: [words[index + 1]]};
           let nextWords = {};
           nextWords[nextWord] = 1;
           source[word] = {count: 1, nextWords: nextWords};
@@ -51,7 +51,6 @@ class App extends React.Component {
             mostFrequentWordCount = source[word].count;
             source['mostFrequentWord'] = word;
           }
-          // source[word].nextWords.push(words[index + 1]);
           if (source[word].nextWords[nextWord]) {
             source[word].nextWords[nextWord] += 1;
           } else {
@@ -85,7 +84,6 @@ class App extends React.Component {
     let words = [];
 
     if (this.state.source[currentWord]) {
-      console.log('word in my source')
       for (var key in this.state.source[currentWord].nextWords) {
         words.push(key);
       }
@@ -93,11 +91,15 @@ class App extends React.Component {
 
     if (words.length === 0) {
       words.push(this.state.source.mostFrequentWord);
+      let allWords = Object.keys(this.state.source);
+      for (let i = 0; i < 9; i++) {
+        words.push(allWords[Math.floor(Math.random() * allWords.length - 1)]);
+      }
     }
 
     if (words.length > 10) {
       let randomizedWords = [];
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 10; i++) {
         randomizedWords.push(words[Math.floor(Math.random() * words.length - 1)]);
       }
       words = randomizedWords;
