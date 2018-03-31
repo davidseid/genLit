@@ -1,7 +1,6 @@
-# genLit
-Creator's Block App - MVP
 
-# Project Name #
+
+# Creator's Block MVP #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -18,33 +17,21 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
- 
-## Heading ##
-  > Creator's Block
-
-## Sub-Heading ##
   > A software to help you write more creatively.
 
-## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
   > This software uses predictive text emulation to assist writers of all levels with the creative writing process. As you write,
   > Creator's Block suggests new words and phrases for you to choose from based on a predictive-text engine and user-selected source material. 
 
-## Problem ##
   > All writers get stuck in their creative process, whether you are struggling to avoid cliches, looking for how to word something, or just need
   > an extra creative spark to push you to your next idea. 
 
-## Solution ##
   > Creator's Block reads what you are writing and intelligently suggests words and phrases for you to choose from when you aren't sure what should come next.
 
-## Quote from You ##
   > "Creator's Block helps writers of all levels unleash their creative potential."
 
-## How to Get Started ##
   > Simply go to creatorsblock.com, input some source material in the style you are looking to write, and start writing! 
 
-## Customer Quote ##
   > "Creator's Block has completely changed the way I write! I never get stuck in my writing anymore!"
 
-## Closing and Call to Action ##
   > Whether you are a new writer or published author, check out the app now and see how Creator's Block can help your writing process!
