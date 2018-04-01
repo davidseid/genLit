@@ -1,4 +1,5 @@
 const express = require('express');
+const HOST = process.env.HOST || 'localhost';
 
 const app = express();
 
@@ -9,4 +10,4 @@ app.use((req, res, next) => {
 
 app.use(express.static('dist'));
 
-app.listen(3000, () => console.log('Listening on port 3000!'))
+app.listen(3000, HOST, () => console.log('Listening on port 3000!'))
