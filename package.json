@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "webpack": "webpack --watch -d"
+    "start": "node server.js",
+    "dev-server": "nodemon server.js",
+    "build": "webpack -p",
+    "dev-build": "webpack --watch -d"
   },
   "repository": {
     "type": "git",
